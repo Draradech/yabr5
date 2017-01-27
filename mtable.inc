@@ -31,6 +31,8 @@ ENTRY('k', rawSensorData.position,    0,       1.0,           "",      "Raw Posi
 ENTRY('l', rawSensorData.diffSide,    0,       1.0,           "",      "Raw Pos Diff",                     -10000.0,   10000.0      )
 ENTRY('y', actuator.powerLeft,        0,       1.0,           "",      "Power Left",                         -256.0,     256.0      )
 ENTRY('x', actuator.powerRight,       0,       1.0,           "",      "Power Right",                        -256.0,     256.0      )
+ENTRY('m', leftdelay,       0,       1.0,           "",      "leftdelay",                        16.0 - 160.0,     16.0      )
+ENTRY(',', rightdelay,       0,       1.0,           "",      "rightdelay",                        32.0 - 160.0,     32.0      )
 ENTRY('c', ultra[0],                  0,       1.0,           "",      "ultra center",                          0.0,    5000.0      )
 ENTRY('v', ultra[1],                  0,       1.0,           "",      "ultra right",                           0.0,    5000.0      )
 ENTRY('b', ultra[2],                  0,       1.0,           "",      "ultra left",                            0.0,    5000.0      )

@@ -2,9 +2,9 @@
 
 void init(void)
 {
-   // PA0 - Battery
+   // PA0
 
-   // PA1
+   // PA1 - Battery
 
    // PA2 - WS2812 Led (Battery indicator)
    DDRA |= (1 << PA2);
@@ -82,7 +82,8 @@ void init(void)
    DDRD |= (1 << PD7);
 
    // ADC
-   ADMUX  =  (1 << REFS0);     // AVCC with external cap
+   ADMUX  =  (1 << REFS0)      // AVCC with external cap
+          |  (1 << MUX0);      // input ADC1
    ADCSRA =  (1 << ADEN)       // ADC Enabled
           |  (1 << ADATE)      // ADC Auto Trigger
           |  (1 << ADPS0)

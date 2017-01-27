@@ -53,7 +53,7 @@ AVRDUDE_PROGRAMMER = avr109
 AVRDUDE_PORT = /dev/rfcomm0
 
 # Avrdude config
-AVRDUDE_CONFIG = ~/arduino-1.6.5/hardware/tools/avr/etc/avrdude.conf
+AVRDUDE_CONFIG = ~/arduino-1.8.1/hardware/tools/avr/etc/avrdude.conf
 
 # Programming command
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex

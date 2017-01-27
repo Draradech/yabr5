@@ -71,7 +71,38 @@ void control(void)
    if(override) byAngle = angleDiff / controlPara.powerByAngleDiv / 24;
    byRate = attitude.angleRateY / controlPara.powerByAngleRateDiv / 256;
 
+
    actuator.powerLeft = -byAngle + byRate - attitude.diffSide;
+   if(actuator.powerLeft < -5 && leftdir != -1)
+   {
+      leftdelay = 16;
+      leftdir = -1;
+   }
+   if(actuator.powerLeft > 5 && leftdir != 1)
+   {
+      leftdelay = 16;
+      leftdir = 1;
+   }
+   if(leftdelay > 0)
+   {
+      leftdelay--;
+      actuator.powerLeft = -byAngle + byRate / 2 - attitude.diffSide;
+   }
+
    actuator.powerRight = -byAngle + byRate + attitude.diffSide;
-   
+   if(actuator.powerRight < -5 && rightdir != -1)
+   {
+      rightdelay = 16;
+      rightdir = -1;
+   }
+   if(actuator.powerRight > 5 && rightdir != 1)
+   {
+      rightdelay = 16;
+      rightdir = 1;
+   }
+   if(rightdelay > 0)
+   {
+      rightdelay--;
+      actuator.powerRight = -byAngle + byRate / 2 + attitude.diffSide;
+   }
 }

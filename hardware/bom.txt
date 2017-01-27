@@ -1,0 +1,30 @@
+0805:
+
+470nF          1x
+10nF           1x
+100nF         12x
+15pF           2x
+
+1k             5x
+3k3            1x
+10k            1x
+4k7            8x
+47k            1x
+
+10µH           1x
+
+
+IC:
+
+LSM330DL       1x
+ATMega644P     1x
+MC33269DT-3.3G 1x
+MC33269DT-5G   1x
+VNH2SP30       2x
+
+
+Misc:
+
+33µF SMD Becherelko  3x
+220µ Elko radial     2x
+2x3 Stifleisten      6x

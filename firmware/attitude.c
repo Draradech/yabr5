@@ -5,20 +5,20 @@ void attitudeCalculation(void)
    int16_t tmp16;
    int32_t tmp32;
 
-   tmp16 = (int32_t) rawSensorData.voltage * 5394 >> 8;      // * 21576 (21,576V) / 1024
+   tmp16 = (int32_t) rawSensorData.voltage * 5340 >> 8;      // * 21576 (21,576V) / 1024
    attitude.voltage = PT1(tmp16, attitude.voltage, 16);
 
    tmp16 = 4843 - rawSensorData.temperature * 84;            // 4843 (48,43 °C) - x * 84 (0,84 °C)
    attitude.temperature = PT1(tmp16, attitude.temperature, 2);
 
    tmp32 = (int32_t) rawSensorData.accX * 1533 >> 8;         // * 196200 (19.62m/ss) / 32768
-   attitude.accX = PT1(tmp32, attitude.accX, 32);
+   attitude.accX = PT1(tmp32, attitude.accX, 64);
 
    tmp32 = (int32_t) rawSensorData.accY * 1533 >> 8;         // * 196200 (19.62m/ss) / 32768
-   attitude.accY = PT1(tmp32, attitude.accY, 32);
+   attitude.accY = PT1(tmp32, attitude.accY, 64);
 
    tmp32 = (int32_t) rawSensorData.accZ * 1533 >> 8;         // * 196200 (19.62m/ss) / 32768
-   attitude.accZ = PT1(tmp32, attitude.accZ, 32);
+   attitude.accZ = PT1(tmp32, attitude.accZ, 64);
 
    tmp32 = (int32_t) rawSensorData.angleRateX * 175;    // * 0.00875 -> 0.0001
    attitude.angleRateX = PT1(tmp32, attitude.angleRateX, 4);
@@ -43,7 +43,8 @@ void attitudeCalculation(void)
    tmp32 = (int32_t) rawSensorData.diffSide * 91 >> 10;
    attitude.diffSide = tmp32;
 
-   attitude.angleAcc = (int32_t)-100 * atan2_cordic(attitude.accZ / 8, attitude.accX / 8);
+   tmp32 = (int32_t)-100 * atan2_cordic(attitude.accZ / 8, attitude.accX / 8);
+   attitude.angleAcc = PT1(tmp32, attitude.angleAcc, 64);
 
    tmp32 = -attitude.angleRateY / LOOPS_PER_SECOND - sensorOffsets.angleRate;
    attitude.angleGyro += tmp32;

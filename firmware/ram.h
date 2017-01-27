@@ -102,4 +102,7 @@ global uint8_t timerout; //synchronize ultrasonic readout and led control
 global int16_t override;
 global uint8_t autonomous;
 
+global int16_t leftdir, rightdir, leftdelay, rightdelay;
+
+
 #endif // _RAM_H_
